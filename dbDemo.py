@@ -14,7 +14,6 @@ rows = cursor.fetchall()
 for row in rows:
     print(row[0], row[2], row[3])
 
-# print(rows)  # list of tuples
 query = "update CustomerInfo set Location = %s where CourseName = %s"
 data = ("USA", "Jmeter")
 

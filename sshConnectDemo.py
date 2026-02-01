@@ -13,13 +13,6 @@ ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh.connect(host, port, username, password)
 
 
-# Rum commands
-# stdin, stdout, stderr = ssh.exec_command("ls -a")
-# print(stdout.readlines())
-# stdin, stdout, stderr = ssh.exec_command("cat testfile")
-# print(stdout.readlines())
-
-
 #upload files
 sftp = ssh.open_sftp()
 destinationPath = "script.py"
