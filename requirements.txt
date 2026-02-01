@@ -1,0 +1,14 @@
+# API Testing and HTTP Requests
+requests==2.31.0
+
+# Database Connectivity
+mysql-connector-python==8.2.0
+
+# SSH Connectivity
+paramiko==3.4.0
+
+# Web Scraping
+beautifulsoup4==4.12.2
+
+# BDD Testing Framework
+behave==1.2.6
