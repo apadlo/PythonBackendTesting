@@ -2,7 +2,7 @@
 requests==2.31.0
 
 # Database Connectivity
-mysql-connector-python==8.2.0
+mysql-connector-python==9.1.0
 
 # SSH Connectivity
 paramiko==3.4.0
