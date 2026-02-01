@@ -3,6 +3,8 @@ from utilities.configurations import *
 import csv
 
 # Start connection
+# Credentials loaded from configuration file (good practice)
+# Note: For production, consider using SSH key-based authentication instead of passwords
 username = getConfig()['Server']['username']
 password = getConfig()['Server']['password']
 host = getConfig()['Server']['host']

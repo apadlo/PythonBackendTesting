@@ -41,7 +41,8 @@ assert delBook_response.json() == {'msg': 'book is successfully deleted'}
 # se.auth = ('username', 'token')  # Load from environment or config
 #
 # git_url = 'https://api.github.com/user'
-# git_response = requests.get(git_url, verify=False, auth=('username', 'token'))
+# # Note: verify=False should only be used in dev environments with self-signed certificates
+# git_response = requests.get(git_url, auth=('username', 'token'))
 # print(git_response.status_code)
 #
 # url2 = 'https://api.github.com/user/repos'
