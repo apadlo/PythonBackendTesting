@@ -34,17 +34,18 @@ assert delBook_response.json() == {'msg': 'book is successfully deleted'}
 
 
 # Authentication
-# verify = False - in case of SSL certification errors
+# Note: Use environment variables or configuration files for credentials
 
 # Establish session to not authenticate every get request from api
-se = requests.session()
-se.auth = ('apadlo', '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')
-
-git_url = 'https://api.github.com/user'
-git_response = requests.get(git_url, verify=False, auth=('apadlo', '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'))
-print(git_response.status_code)
-
-url2 = 'https://api.github.com/user/repos'
-
-response = se.get(url2)
-print(response.status_code)
+# se = requests.session()
+# se.auth = ('username', 'token')  # Load from environment or config
+#
+# git_url = 'https://api.github.com/user'
+# # Note: verify=False should only be used in dev environments with self-signed certificates
+# git_response = requests.get(git_url, auth=('username', 'token'))
+# print(git_response.status_code)
+#
+# url2 = 'https://api.github.com/user/repos'
+#
+# response = se.get(url2)
+# print(response.status_code)

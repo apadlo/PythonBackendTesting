@@ -3,6 +3,8 @@ from utilities.configurations import *
 import csv
 
 # Start connection
+# Credentials loaded from configuration file (good practice)
+# Note: For production, consider using SSH key-based authentication instead of passwords
 username = getConfig()['Server']['username']
 password = getConfig()['Server']['password']
 host = getConfig()['Server']['host']
@@ -11,13 +13,6 @@ ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 ssh.connect(host, port, username, password)
-
-
-# Rum commands
-# stdin, stdout, stderr = ssh.exec_command("ls -a")
-# print(stdout.readlines())
-# stdin, stdout, stderr = ssh.exec_command("cat testfile")
-# print(stdout.readlines())
 
 
 #upload files

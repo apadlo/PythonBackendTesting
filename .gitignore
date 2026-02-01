@@ -1,3 +1,6 @@
 /utilities/properties.ini
 /venv/
 /Materiały z kursu/
+__pycache__/
+*.pyc
+*.pyo

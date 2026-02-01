@@ -18,7 +18,6 @@ for filename in finaldirlist:
     makefinal=makefinal+lines[0]
 
     for i in range(1,len(lines)):
-        # print(lines[i])
         row=(lines[i]).strip().split(",")
         print(row[0])
         apporvedornot=""
@@ -30,15 +29,5 @@ for filename in finaldirlist:
         makefinal=makefinal+row[0]+","+apporvedornot+"\n"
 
 
-
     text_file = open(filename, "w+")
     n = text_file.write(makefinal)
-
-
-
-# f = open("demofile.txt", "r")
-# print(f.read()) 
-
-
-
-# print(num1)
