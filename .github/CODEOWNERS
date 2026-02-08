@@ -1,0 +1,29 @@
+# CODEOWNERS file for PythonBackendTesting
+# This file defines who is responsible for code review and approval
+
+# Default owner for all files in the repository
+* @apadlo
+
+# API testing files
+/apiValidations.py @apadlo
+/postAPIexample.py @apadlo
+/payLoad.py @apadlo
+
+# Database operations
+/dbDemo.py @apadlo
+
+# BDD Framework
+/features/ @apadlo
+
+# Utilities and configuration
+/utilities/ @apadlo
+
+# CI/CD and GitHub workflows
+/.github/ @apadlo
+
+# Documentation
+/README.md @apadlo
+/CONTRIBUTING.md @apadlo
+
+# Dependencies
+/requirements.txt @apadlo
