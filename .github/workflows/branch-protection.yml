@@ -14,6 +14,8 @@ jobs:
   quality-checks:
     name: Code Quality & Security Checks
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
@@ -51,6 +53,8 @@ jobs:
   test-suite:
     name: Run Test Suite
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
@@ -78,6 +82,8 @@ jobs:
   branch-protection-status:
     name: Branch Protection Status
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     needs: [quality-checks, test-suite]
     
     steps:
