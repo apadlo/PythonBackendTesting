@@ -1,6 +1,10 @@
 # Python Backend Testing Framework
 
+[![Branch Protection](https://github.com/apadlo/PythonBackendTesting/actions/workflows/branch-protection.yml/badge.svg)](https://github.com/apadlo/PythonBackendTesting/actions/workflows/branch-protection.yml)
+
 A comprehensive Python automation framework demonstrating backend testing capabilities including API testing, database operations, web scraping, SSH connectivity, and BDD test implementation. This project showcases various Python testing modules and techniques for end-to-end backend/server-side automation.
+
+> **Note**: This repository implements branch protection via CI workflows and governance files. See [BRANCH_PROTECTION.md](BRANCH_PROTECTION.md) for details.
 
 ## 🚀 Features
 
@@ -136,6 +140,19 @@ This project demonstrates:
 - Uploading and downloading batch job files from servers with Paramiko
 - Web scraping techniques for data extraction
 - Content extraction from web pages using BeautifulSoup
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on:
+- Branch protection policies
+- Code quality standards
+- Pull request process
+- Security best practices
+
+Before contributing, please review:
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
+- [SECURITY.md](SECURITY.md) - Security policy
+- [BRANCH_PROTECTION.md](BRANCH_PROTECTION.md) - Branch protection details
 
 ## 📝 License
 
