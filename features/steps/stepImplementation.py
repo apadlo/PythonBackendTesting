@@ -1,3 +1,5 @@
+import os
+
 from behave import *
 import requests
 from utilities.configurations import *
@@ -35,8 +37,13 @@ def step_impl(context, isbn, aisle):
 
 @given('I have github auth credentials')
 def step_impl(context):
+    username = os.getenv("GITHUB_USERNAME", "")
+    token = os.getenv("GITHUB_TOKEN", "")
+    if not username or not token:
+        raise RuntimeError("Set GITHUB_USERNAME and GITHUB_TOKEN for GitHub API scenario")
+
     context.se = requests.session()
-    context.se.auth = ('apadlo', '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')
+    context.se.auth = (username, token)
 
 
 
