@@ -12,3 +12,6 @@ beautifulsoup4==4.12.2
 
 # BDD Testing Framework
 behave==1.2.6
+
+# Pytest-based test stack
+pytest==8.3.4

@@ -1,0 +1,8 @@
+[API]
+endpoint = http://216.10.245.166
+
+[SQL]
+user = your_user
+password = your_password
+host = your_host
+database = your_database

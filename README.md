@@ -69,7 +69,9 @@ pip install -r requirements.txt
 ```
 
 3. Configure your environment:
-   - Update `utilities/properties.ini` with your API endpoints, database credentials, and SSH details
+   - Copy `utilities/properties.ini.example` to `utilities/properties.ini` and update values as needed
+   - Or set environment variables (CI-friendly): `API_ENDPOINT`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_NAME`
+   - For GitHub API BDD scenario, set: `GITHUB_USERNAME`, `GITHUB_TOKEN`
 
 ## 📁 Project Structure
 
@@ -95,7 +97,17 @@ PythonBackendTesting/
 
 ## 🎯 Usage Examples
 
-### Running API Tests
+### Running Pytest Test Suite (recommended)
+```bash
+pytest
+```
+
+Run only API contract tests:
+```bash
+pytest tests/test_api_contracts.py -v
+```
+
+### Running legacy script-style API demos
 ```bash
 python apiValidations.py
 python postAPIexample.py
@@ -120,6 +132,22 @@ python sshConnectDemo.py
 ```bash
 python webScrapping.py
 ```
+
+## 🤖 Jenkins / CI Commands
+
+Install and run tests in a pipeline shell step:
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+pytest -q --maxfail=1 --disable-warnings --junitxml=reports/pytest.xml
+```
+
+Optional (BDD):
+```bash
+behave --junit --junit-directory reports/behave
+```
+
 
 ## 💡 Key Learning Points
 
