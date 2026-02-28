@@ -7,7 +7,7 @@ from mysql.connector import Error
 
 
 DEFAULTS: Dict[str, Dict[str, str]] = {
-    "API": {"endpoint": os.getenv("API_ENDPOINT", "http://216.10.245.166")},
+    "API": {"endpoint": os.getenv("API_ENDPOINT", "https://example.invalid")},
     "SQL": {
         "user": os.getenv("DB_USER", ""),
         "password": os.getenv("DB_PASSWORD", ""),

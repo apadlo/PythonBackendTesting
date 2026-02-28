@@ -2,46 +2,50 @@
 
 [![Branch Protection](https://github.com/apadlo/PythonBackendTesting/actions/workflows/branch-protection.yml/badge.svg)](https://github.com/apadlo/PythonBackendTesting/actions/workflows/branch-protection.yml)
 
-A comprehensive Python automation framework demonstrating backend testing capabilities including API testing, database operations, web scraping, SSH connectivity, and BDD test implementation. This project showcases various Python testing modules and techniques for end-to-end backend/server-side automation.
+A comprehensive Python automation framework for backend testing practice, including API testing, database operations, web scraping, SSH connectivity demos, and BDD scenarios.  
+It now also includes a modernized **pytest** layer focused on resilient API contracts and config-driven behavior.
 
 > **Note**: This repository implements branch protection via CI workflows and governance files. See [BRANCH_PROTECTION.md](BRANCH_PROTECTION.md) for details.
 
 ## 🚀 Features
 
-- **API Automation**: RESTful API testing with requests library
+- **API Automation**: REST API testing with `requests`
   - GET, POST, PUT, DELETE operations
   - Authentication handling
   - Response validation and parsing
-  
-- **Database Testing**: MySQL database connectivity and operations
+
+- **Pytest Test Layer (modernized)**
+  - Contract-style checks in `tests/test_api_contracts.py`
+  - Config and payload behavior tests in `tests/test_payloads_and_config.py`
+  - Better handling for network instability and fallback behavior
+
+- **Database Testing**: MySQL connectivity and operations
   - CRUD operations on database tables
   - Multiple result set handling
   - Database-driven test data management
 
-- **BDD Framework**: Behavior-driven development implementation
-  - Behave framework integration
+- **BDD Framework**: Behavior-driven development with `behave`
   - Feature files with Gherkin syntax
   - Step definitions and scenarios
 
-- **File Processing**: Data handling capabilities
+- **File Processing**
   - JSON parsing and manipulation
   - CSV file reading and writing
   - Dynamic payload generation
 
-- **SSH Automation**: Remote server interactions
+- **SSH Automation (demo scripts)**
   - SSH connection via Paramiko
   - Remote command execution
   - File upload/download operations
-  - Batch job management
 
-- **Web Scraping**: Data extraction from web pages
+- **Web Scraping (demo scripts)**
   - BeautifulSoup integration
-  - HTML parsing
-  - Content extraction techniques
+  - HTML parsing and content extraction
 
 ## 🛠️ Technologies Used
 
 - **Python 3.x**
+- **pytest** - modern test runner for API contracts/config tests
 - **requests** - HTTP library for API testing
 - **mysql-connector-python** - MySQL database connectivity
 - **paramiko** - SSH protocol implementation
@@ -51,84 +55,97 @@ A comprehensive Python automation framework demonstrating backend testing capabi
 
 ## 📋 Prerequisites
 
-- Python 3.7 or higher
-- MySQL Server (for database testing)
+- Python 3.8+
+- MySQL Server (for database testing demos)
 - SSH server access (for SSH demos)
 
 ## 🔧 Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/apadlo/PythonBackendTesting.git
 cd PythonBackendTesting
 ```
 
 2. Install required dependencies:
+
 ```bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
 3. Configure your environment:
-   - Copy `utilities/properties.ini.example` to `utilities/properties.ini` and update values as needed
-   - Or set environment variables (CI-friendly): `API_ENDPOINT`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_NAME`
-   - For GitHub API BDD scenario, set: `GITHUB_USERNAME`, `GITHUB_TOKEN`
+   - Recommended: set environment variables
+     - `API_ENDPOINT`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_NAME`
+     - for GitHub API scenario: `GITHUB_USERNAME`, `GITHUB_TOKEN`
+   - Or copy `utilities/properties.ini.example` to `utilities/properties.ini` and fill local values
+
+> `utilities/properties.ini` is gitignored by default and should not be committed.
 
 ## 📁 Project Structure
 
-```
+```text
 PythonBackendTesting/
-├── apiValidations.py         # API GET request validation examples
-├── postAPIexample.py          # API POST/DELETE examples with authentication
-├── dbDemo.py                  # Database connection and operations
-├── csvDemo.py                 # CSV file reading and parsing
-├── jsonParser.py              # JSON parsing examples
-├── webScrapping.py            # Web scraping implementation
-├── sshConnectDemo.py          # SSH connectivity and file operations
-├── payLoad.py                 # Dynamic payload generation
-├── features/                  # BDD test scenarios
-│   ├── BookAPI.feature        # API testing scenarios
-│   ├── environment.py         # Test setup and teardown
-│   └── steps/                 # Step definitions
-├── utilities/                 # Helper modules
-│   ├── configurations.py      # Configuration management
-│   └── resources.py           # Resource paths and endpoints
-└── requirements.txt           # Project dependencies
+├── tests/                     # pytest tests (contract + config/payload)
+├── features/                  # behave features and steps
+├── utilities/                 # config + helper modules
+├── apiValidations.py          # script-style API validation examples
+├── postAPIexample.py          # API POST/DELETE example
+├── dbDemo.py                  # Database demo
+├── csvDemo.py                 # CSV parsing demo
+├── jsonParser.py              # JSON parsing demo
+├── webScrapping.py            # Web scraping demo
+├── sshConnectDemo.py          # SSH demo
+├── payLoad.py                 # Dynamic payload helper
+├── README.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+└── BRANCH_PROTECTION.md
 ```
 
 ## 🎯 Usage Examples
 
 ### Running Pytest Test Suite (recommended)
+
 ```bash
-pytest
+pytest -q
 ```
 
-Run only API contract tests:
+Run specific suites:
+
 ```bash
 pytest tests/test_api_contracts.py -v
+pytest tests/test_payloads_and_config.py -v
 ```
 
 ### Running legacy script-style API demos
+
 ```bash
 python apiValidations.py
 python postAPIexample.py
 ```
 
 ### Running BDD Tests
+
 ```bash
 behave features/BookAPI.feature
 ```
 
 ### Database Operations
+
 ```bash
 python dbDemo.py
 ```
 
 ### SSH File Operations
+
 ```bash
 python sshConnectDemo.py
 ```
 
 ### Web Scraping
+
 ```bash
 python webScrapping.py
 ```
@@ -144,43 +161,33 @@ pytest -q --maxfail=1 --disable-warnings --junitxml=reports/pytest.xml
 ```
 
 Optional (BDD):
+
 ```bash
 behave --junit --junit-directory reports/behave
 ```
 
-
 ## 💡 Key Learning Points
 
 This project demonstrates:
-- JSON parsing and manipulation with Python modules
-- API automation using the requests library
-- CRUD operations (GET, POST, DELETE, PUT) automation
-- API response parsing with Python utilities
-- Database interactions with Python SQL Connector
-- BDD automation framework development from scratch
-- Reading multiple result sets from database tables
-- Integrating database readers with API calls to build payloads
-- CSV parsing with Python modules
-- Reading and writing to CSV files
-- Interacting with Linux servers
-- Establishing SSH connections using Python Paramiko
-- Executing commands and jobs on remote servers through Python
-- Uploading and downloading batch job files from servers with Paramiko
-- Web scraping techniques for data extraction
-- Content extraction from web pages using BeautifulSoup
+
+- API automation with Python `requests`
+- Contract-style validation patterns with pytest
+- CRUD workflow testing (GET/POST/DELETE/PUT)
+- Parsing API responses and extracting reusable data
+- Database interactions using Python SQL connector
+- Building BDD tests with `behave`
+- Integrating config-driven test execution
+- CSV and JSON data parsing techniques
+- SSH-based remote operations using Paramiko
+- Web scraping with BeautifulSoup
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on:
-- Branch protection policies
-- Code quality standards
-- Pull request process
-- Security best practices
+We welcome contributions. Please review:
 
-Before contributing, please review:
-- [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
-- [SECURITY.md](SECURITY.md) - Security policy
-- [BRANCH_PROTECTION.md](BRANCH_PROTECTION.md) - Branch protection details
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [SECURITY.md](SECURITY.md)
+- [BRANCH_PROTECTION.md](BRANCH_PROTECTION.md)
 
 ## 📝 License
 
@@ -190,4 +197,4 @@ This project is available for educational and portfolio purposes.
 
 **apadlo**
 
-Feel free to explore the code and use it as a reference for your backend automation projects!
+Feel free to explore the code and use it as a reference for backend automation learning.
